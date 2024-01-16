@@ -47,60 +47,32 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-PS C:\Users\TPS-admin\Desktop\Credit-Bureau-Report-front> npm i
-npm WARN deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged
-to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin
--transform-private-methods instead.
-npm WARN deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged
- to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugi
-n-transform-class-properties instead.
-npm WARN deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has
-been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @
-babel/plugin-transform-nullish-coalescing-operator instead.
-npm WARN deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thu
-s this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
-npm WARN deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thu
-s this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
-npm WARN deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
-npm WARN deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
-npm WARN deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
-npm WARN deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
-npm WARN cleanup Failed to remove some directories [
-npm WARN cleanup   [
-npm WARN cleanup     'C:\\Users\\TPS-admin\\Desktop\\Credit-Bureau-Report-front\\node_modules\\postcss-load-config',
-npm WARN cleanup     [Error: EPERM: operation not permitted, rmdir 'C:\Users\TPS-admin\Desktop\Credit-Bureau-Report-front\node_module
-s\postcss-load-config\node_modules\yaml\browser\dist'] {
-npm WARN cleanup       errno: -4048,
-npm WARN cleanup       code: 'EPERM',
-npm WARN cleanup       syscall: 'rmdir',
-npm WARN cleanup       path: 'C:\\Users\\TPS-admin\\Desktop\\Credit-Bureau-Report-front\\node_modules\\postcss-load-config\\node_modu
-les\\yaml\\browser\\dist'
-npm WARN cleanup     }
-npm WARN cleanup   ],
-npm WARN cleanup   [
-npm WARN cleanup     'C:\\Users\\TPS-admin\\Desktop\\Credit-Bureau-Report-front\\node_modules\\eslint-plugin-react',
-npm WARN cleanup     [Error: EPERM: operation not permitted, rmdir 'C:\Users\TPS-admin\Desktop\Credit-Bureau-Report-front\node_module
-s\eslint-plugin-react'] {
-npm WARN cleanup       errno: -4048,
-npm WARN cleanup       code: 'EPERM',
-npm WARN cleanup       syscall: 'rmdir',
-npm WARN cleanup       path: 'C:\\Users\\TPS-admin\\Desktop\\Credit-Bureau-Report-front\\node_modules\\eslint-plugin-react'
-npm WARN cleanup     }
-npm WARN cleanup   ]
-npm WARN cleanup ]
-npm ERR! code EEXIST
-npm ERR! syscall rename
-npm ERR! path C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\tmp\c975ce32
-npm ERR! dest C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\content-v2\sha512\d4\55\e4f44d879be433650ef3f8c7098872f8356d45d84cc
-cbbd36af62df301a1aa89b69fa98c02554e96c9602ec90451cce971a2ef31652c972c437ca0a8f6e2
-npm ERR! errno -4082
-npm ERR! EBUSY: resource busy or locked, rename 'C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\tmp\c975ce32' -> 'C:\Users\TPS-a
-dmin\AppData\Local\npm-cache\_cacache\content-v2\sha512\d4\55\e4f44d879be433650ef3f8c7098872f8356d45d84cccbbd36af62df301a1aa89b69fa98
-c02554e96c9602ec90451cce971a2ef31652c972c437ca0a8f6e2'
-npm ERR! File exists: C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\content-v2\sha512\d4\55\e4f44d879be433650ef3f8c7098872f8356
-d45d84cccbbd36af62df301a1aa89b69fa98c02554e96c9602ec90451cce971a2ef31652c972c437ca0a8f6e2
-npm ERR! Remove the existing file and try again, or run npm
-npm ERR! with --force to overwrite files recklessly.
+4575 verbose stack Error: EBUSY: resource busy or locked, rename 'C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\tmp\6dcf2c60' -> 'C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\content-v2\sha512\e3\09\f4592845e374eb820b240493d1a820f47dc1dbcd36239daa2c91d889ad51e0f3acb1a19f1952ab17bf29f8594a9e8518852a769c94e86a93dc38522d8a57'
+4575 verbose stack     at async Object.rename (node:internal/fs/promises:779:10)
+4575 verbose stack     at async moveFile (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\@npmcli\fs\lib\move-file.js:30:5)
+4575 verbose stack     at async C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\cacache\lib\content\write.js:172:9
+4575 verbose stack     at async handleContent (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\cacache\lib\content\write.js:105:5)
+4576 verbose cwd C:\Users\TPS-admin\Desktop\Credit-Bureau-Report-front
+4577 verbose Windows_NT 10.0.14393
+4578 verbose node v21.6.0
+4579 verbose npm  v10.2.4
+4580 error code EEXIST
+4581 error syscall rename
+4582 error path C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\tmp\6dcf2c60
+4583 error dest C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\content-v2\sha512\e3\09\f4592845e374eb820b240493d1a820f47dc1dbcd36239daa2c91d889ad51e0f3acb1a19f1952ab17bf29f8594a9e8518852a769c94e86a93dc38522d8a57
+4584 error errno -4082
+4585 error EBUSY: resource busy or locked, rename 'C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\tmp\6dcf2c60' -> 'C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\content-v2\sha512\e3\09\f4592845e374eb820b240493d1a820f47dc1dbcd36239daa2c91d889ad51e0f3acb1a19f1952ab17bf29f8594a9e8518852a769c94e86a93dc38522d8a57'
+4586 error File exists: C:\Users\TPS-admin\AppData\Local\npm-cache\_cacache\content-v2\sha512\e3\09\f4592845e374eb820b240493d1a820f47dc1dbcd36239daa2c91d889ad51e0f3acb1a19f1952ab17bf29f8594a9e8518852a769c94e86a93dc38522d8a57
+4587 error Remove the existing file and try again, or run npm
+4588 error with --force to overwrite files recklessly.
+4589 verbose exit -4082
+4590 timing npm Completed in 609515ms
+4591 verbose unfinished npm timer command:i 1705390296805
+4592 verbose unfinished npm timer reify 1705390296808
+4593 verbose unfinished npm timer reify:unpack 1705390298992
+4594 verbose unfinished npm timer reifyNode:node_modules/@eslint/eslintrc/node_modules/globals 1705390299155
+4595 verbose unfinished npm timer reifyNode:node_modules/@ant-design/icons-svg 1705390299190
+4596 verbose unfinished npm timer reifyNode:node_modules/@ant-design/icons 1705390299190
+4597 verbose code -4082
+4598 error A complete log of this run can be found in: C:\Users\TPS-admin\AppData\Local\npm-cache\_logs\2024-01-16T07_31_36_332Z-debug-0.log
 
-npm ERR! A complete log of this run can be found in: C:\Users\TPS-admin\AppData\Local\npm-cache\_logs\2024-01-16T07_01_15_315Z-debug-
-0.log
