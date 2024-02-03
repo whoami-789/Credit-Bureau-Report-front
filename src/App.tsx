@@ -10,6 +10,7 @@ const { RangePicker } = DatePicker;
 const App: React.FC = () => {
     const [dates, setDates] = useState<[Dayjs, Dayjs] | []>([]);
     const [numdog, setNumdog] = useState<string>('');
+    const [kodchlen, setClient] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleDateChange = (dates: RangeValue<Dayjs>) => {
@@ -31,6 +32,10 @@ const App: React.FC = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNumdog(e.target.value);
+    };
+
+    const handleInputChangeClient = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setClient(e.target.value);
     };
 
     const handleButtonClick = () => {
@@ -84,6 +89,30 @@ const App: React.FC = () => {
             message.error('Пожалуйста, выберите диапазон дат и введите номер договора');
         }
     };
+    const handleButtonClickWithClient = () => {
+        if (kodchlen) { // Проверка наличия кода клиента
+            setLoading(true);
+
+            // Формирование URL для GET-запроса, включая только kodchlen
+            const url = `http://localhost:8080/api/report/client?kodchlen=${kodchlen}`;
+
+            axios.get(url)
+                .then(response => {
+                    console.log('Data with kodchlen sent successfully', response);
+                    message.success('Отчет с кодом клиента отправлен успешно');
+                })
+                .catch(error => {
+                    console.error('Error sending data with kodchlen', error);
+                    message.error('Ошибка при отправке отчета с кодом клиента');
+                })
+                .finally(() => {
+                    setLoading(false); // Окончание процесса загрузки
+                });
+        } else {
+            message.error('Пожалуйста, введите код клиента');
+        }
+    };
+
 
     return (
         <div className="flex justify-center items-center h-screen">
@@ -98,6 +127,10 @@ const App: React.FC = () => {
                         <Input placeholder="Номер договора" onChange={handleInputChange} value={numdog} />
                         <Button type="default" onClick={handleButtonClickWithNumdog} disabled={loading || dates.length < 2 || !numdog}>
                             Отправить отчет с номером договора
+                        </Button>
+                        <Input placeholder="Код клиента" onChange={handleInputChangeClient} value={kodchlen} />
+                        <Button type="default" onClick={handleButtonClickWithClient} disabled={loading || !kodchlen}>
+                            Отправить отчет с кодом клиента
                         </Button>
                     </Space>
                 </Spin>
