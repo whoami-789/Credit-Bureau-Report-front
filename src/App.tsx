@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { DatePicker, Space, Button, Spin, message, Input } from 'antd';
+import React, {useState} from 'react';
+import {DatePicker, Space, Button, Spin, message, Input} from 'antd';
 import axios from 'axios';
-import { RangeValue } from 'rc-picker/lib/interface';
-import dayjs, { Dayjs } from 'dayjs'; // Импортируем `dayjs` вместо `moment`
+import {RangeValue} from 'rc-picker/lib/interface';
+import dayjs, {Dayjs} from 'dayjs'; // Импортируем `dayjs` вместо `moment`
 
-const { RangePicker } = DatePicker;
+const {RangePicker} = DatePicker;
 
 // Обновляем типы для использования Dayjs
 const App: React.FC = () => {
@@ -39,6 +39,31 @@ const App: React.FC = () => {
     };
 
     const handleButtonClick = () => {
+        if (dates.length === 2) {
+            setLoading(true);
+
+            const startDate = dates[0].format('YYYY-MM-DD');
+            const endDate = dates[1].format('YYYY-MM-DD');
+
+            const url = `http://localhost:8080/api/report?startDate=${startDate}&endDate=${endDate}`;
+
+            axios.get(url)
+                .then(response => {
+                    console.log('Date range sent successfully', response);
+                    message.success('Отчет по датам отправлен успешно');
+                })
+                .catch(error => {
+                    console.error('Error sending date range', error);
+                    message.error('Ошибка при отправке отчета по датам');
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        } else {
+            message.error('Пожалуйста, выберите диапазон дат');
+        }
+    };
+    const handleDataDogClick = () => {
         if (dates.length === 2) {
             setLoading(true);
 
@@ -119,16 +144,20 @@ const App: React.FC = () => {
             <div className="grid gap-4">
                 <div className="text-center mb-4">Отчет для КРИФ</div>
                 <Spin spinning={loading}>
-                    <Space direction="vertical" size={12} style={{ display: 'flex' }}>
-                        <RangePicker onChange={(dates) => handleDateChange(dates)} inputReadOnly />
+                    <Space direction="vertical" size={12} style={{display: 'flex'}}>
+                        <RangePicker onChange={(dates) => handleDateChange(dates)} inputReadOnly/>
                         <Button type="default" onClick={handleButtonClick} disabled={loading || dates.length < 2}>
-                            Отправить отчет по датам
+                            Отправить отчет по дате изменения кредита
                         </Button>
-                        <Input placeholder="Номер договора" onChange={handleInputChange} value={numdog} />
-                        <Button type="default" onClick={handleButtonClickWithNumdog} disabled={loading || dates.length < 2 || !numdog}>
+                        <Button type="default" onClick={handleDataDogClick} disabled={loading || dates.length < 2}>
+                            Отправить отчет по дате создания кредита
+                        </Button>
+                        <Input placeholder="Номер договора" onChange={handleInputChange} value={numdog}/>
+                        <Button type="default" onClick={handleButtonClickWithNumdog}
+                                disabled={loading || dates.length < 2 || !numdog}>
                             Отправить отчет с номером договора
                         </Button>
-                        <Input placeholder="Код клиента" onChange={handleInputChangeClient} value={kodchlen} />
+                        <Input placeholder="Код клиента" onChange={handleInputChangeClient} value={kodchlen}/>
                         <Button type="default" onClick={handleButtonClickWithClient} disabled={loading || !kodchlen}>
                             Отправить отчет с кодом клиента
                         </Button>
