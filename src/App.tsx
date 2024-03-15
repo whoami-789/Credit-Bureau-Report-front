@@ -45,7 +45,7 @@ const App: React.FC = () => {
             const startDate = dates[0].format('YYYY-MM-DD');
             const endDate = dates[1].format('YYYY-MM-DD');
 
-            const url = `http://localhost:8080/api/report?startDate=${startDate}&endDate=${endDate}`;
+            const url = `http://localhost:5050/api/report?startDate=${startDate}&endDate=${endDate}`;
 
             axios.get(url)
                 .then(response => {
@@ -70,7 +70,7 @@ const App: React.FC = () => {
             const startDate = dates[0].format('YYYY-MM-DD');
             const endDate = dates[1].format('YYYY-MM-DD');
 
-            const url = `http://localhost:8080/api/report?startDate=${startDate}&endDate=${endDate}`;
+            const url = `http://localhost:5050/api/report/datadog?startDate=${startDate}&endDate=${endDate}`;
 
             axios.get(url)
                 .then(response => {
@@ -96,7 +96,7 @@ const App: React.FC = () => {
             const startDate = dates[0].format('YYYY-MM-DD');
             const endDate = dates[1].format('YYYY-MM-DD');
 
-            const url = `http://localhost:8080/api/report/numdog?startDate=${startDate}&endDate=${endDate}&numdog=${numdog}`;
+            const url = `http://localhost:5050/api/report/numdog?startDate=${startDate}&endDate=${endDate}&numdog=${numdog}`;
 
             axios.get(url)
                 .then(response => {
@@ -119,7 +119,7 @@ const App: React.FC = () => {
             setLoading(true);
 
             // Формирование URL для GET-запроса, включая только kodchlen
-            const url = `http://localhost:8080/api/report/client?kodchlen=${kodchlen}`;
+            const url = `http://localhost:5050/api/report/client?kodchlen=${kodchlen}`;
 
             axios.get(url)
                 .then(response => {
