@@ -72,14 +72,20 @@ const App: React.FC = () => {
 
             const url = `http://localhost:5050/api/report/datadog?startDate=${startDate}&endDate=${endDate}`;
 
-            axios.get(url)
+            axios.get(url, { responseType: 'blob' }) // Указываем тип ответа как 'blob'
                 .then(response => {
-                    console.log('Date range sent successfully', response);
-                    message.success('Отчет по датам отправлен успешно');
+                    const blob = new Blob([response.data]); // Создаем объект Blob из полученных данных
+                    const url = URL.createObjectURL(blob); // Создаем URL из Blob
+                    const link = document.createElement('a'); // Создаем ссылку для скачивания файла
+                    link.href = url;
+                    link.setAttribute('download', 'report.zip'); // Устанавливаем имя файла для скачивания
+                    document.body.appendChild(link); // Добавляем ссылку на страницу
+                    link.click(); // Имитируем клик по ссылке для скачивания файла
+                    message.success('Отчет успешно скачан');
                 })
                 .catch(error => {
-                    console.error('Error sending date range', error);
-                    message.error('Ошибка при отправке отчета по датам');
+                    console.error('Error downloading report', error);
+                    message.error('Ошибка при скачивании отчета');
                 })
                 .finally(() => {
                     setLoading(false);
@@ -88,6 +94,7 @@ const App: React.FC = () => {
             message.error('Пожалуйста, выберите диапазон дат');
         }
     };
+
 
     const handleButtonClickWithNumdog = () => {
         if (dates.length === 2 && numdog) {
